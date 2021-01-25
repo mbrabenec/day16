@@ -1,0 +1,21 @@
+h1 {
+    color: red;
+}
+
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1em;
+
+    input, label {
+        margin: 0.1em;
+    }
+
+    input {
+        background-color: lightblue;
+    }
+
+    button {
+        margin: 0.5em 0 0 0;
+    }
+}
