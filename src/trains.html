@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/shopping.css">
+    <link rel="stylesheet" href="/css/trains.css">
 </head>
 <body>
 
@@ -22,12 +22,33 @@
         <input type="text" class="formfield">
         <label for="">dest</label>
         <input type="text" class="formfield">
-
         <button id="button">Make Train</button>
+    </div>
 
+    <div class="board">
+
+        <div class="board__header">
+            <div class="header__left">Train Departures</div>
+            <div class="header__right">10.15am</div>
+        </div>
+
+        <table class="timetable">
+            <thead class="table__head">
+                <th>id</th>
+                <th>time</th>
+                <th>name</th>
+                <th>destination</th>
+            </thead>
+
+            <tbody id="table__body"></tbody>
+
+        </table>
     </div>
 
 
-    <script src="/js/shopping.js"></script>
+    <script src="/js/trains.js"></script>
 </body>
 </html>
+
+
+

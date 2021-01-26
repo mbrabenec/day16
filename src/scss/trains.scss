@@ -19,3 +19,30 @@ h1 {
         margin: 0.5em 0 0 0;
     }
 }
+
+.timetable {
+    display: table;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+tr {
+    cursor: pointer;
+}
+
+tr:nth-child(even){
+    background-color: lightblue;
+}
+
+td {
+    padding: 0.5em;
+    
+    
+}
+
+.id {
+    color: red;
+}
