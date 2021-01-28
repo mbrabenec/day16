@@ -16,13 +16,13 @@ class Trains{
         newRow.id = train.id;
         
         newRow.innerHTML = `
-        <td>${train.id}</td>
-        <td>${time}</td>
-        <td class ="status" data="${train.id}">${train.status}</td>
-        <td>${train.name}</td>
-        <td>${train.destination}</td>
-        <td><input type="button" value = "delayed" onclick="delayed(this)" data="${train.id}"></td>
-        <td><input type="button" value = "delete" onclick="del(this)" data="${train.id}"></td>
+        <td></td>
+        <td></td>
+        <td class ="status"</td>
+        <td></td>
+        <td></td>
+        <td><input type="button" value = "delayed" onclick="delayed(this)" data=""></td>
+        <td><input type="button" value = "delete" onclick="del(this)" data=""></td>
         `
 
         if(train.status === "delayed") newRow.style.background="red";

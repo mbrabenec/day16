@@ -1,15 +1,31 @@
+
+const url2 = `http://bootcamp.podlomar.org/api/departures`
+
 class Trains{
 
-    constructor(id, time, status, name, dest) {
+    constructor(id, hours, mins, status, name, dest) {
         
-        this.id = id,
-        this.time = time,
-        this.status = status,
-        this.name = name,
+        this.id = id;
+        this.hours = hours;
+        this.mins = mins;
+        this.status = status;
+        this.name = name;
         this.destination = dest
     }
-    
+
+    .
+
+
+
+
+
 }
+
+
+
+
+
+
 
 // globals
 
@@ -20,6 +36,10 @@ const button = document.getElementById("button");
 const tbody = document.getElementById("table__body");
 
 // Functions
+
+
+
+
 
 
 const newTrain = () => {
@@ -34,6 +54,9 @@ const newTrain = () => {
 
     updateAll();
 }
+
+
+
 
 
 const updateAll = () => {
@@ -54,7 +77,7 @@ const updateAll = () => {
         newRow.innerHTML = `
         
         <td>${train.id}</td>
-        <td>${time}</td>
+        <td>${train.hours}:${train.mins}</td>
         <td class ="status" data="${train.id}">${train.status}</td>
         <td>${train.name}</td>
         <td>${train.destination}</td>
@@ -110,11 +133,16 @@ button.addEventListener("click", newTrain);
 
 ///// ///// ///// ///// ///// ///// ///// ///// /////   run
 
-trains.push({id: "121", time: 540, status: "on time", name: "bob", destination: "paris"});
-trains.push({id: "432", time: 640, status: "on time", name: "jane", destination: "berlin"});
-trains.push({id: "653", time: 340, status: "delayed", name: "tom", destination: "york"});
-trains.push({id: "457", time: 140, status: "on time", name: "rob", destination: "praha"});
-trains.push({id: "115", time: 430, status: "on time", name: "ivan", destination: "kiev"});
+fetch(url2)
+    .then((result) => 
+        result.json())
+    .then((data) => {
+
+
+    data.forEach(train => {
+        trains.push(new Trains(train.no, train.time.hrs, train.time.mins, train.status ,train.train, train.to))
+    });
+});
 
 updateAll();
 
