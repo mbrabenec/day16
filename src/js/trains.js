@@ -2,13 +2,47 @@ class Trains{
 
     constructor(id, time, status, name, dest) {
         
-        this.id = id,
-        this.time = time,
-        this.status = status,
-        this.name = name,
-        this.destination = dest
+        this.id = id;
+        this.time = Math.floor(time /60)+":"+(time % 60);
+        this.status = status;
+        this.name = name;
+        this.destination = dest;
+        this.element = this._crateElem();
     }
+
+    _createElem() {
+
+        let newRow = document.createElement('tr');
+        newRow.id = train.id;
+        
+        newRow.innerHTML = `
+        <td>${train.id}</td>
+        <td>${time}</td>
+        <td class ="status" data="${train.id}">${train.status}</td>
+        <td>${train.name}</td>
+        <td>${train.destination}</td>
+        <td><input type="button" value = "delayed" onclick="delayed(this)" data="${train.id}"></td>
+        <td><input type="button" value = "delete" onclick="del(this)" data="${train.id}"></td>
+        `
+
+        if(train.status === "delayed") newRow.style.background="red";
+
+        return newRow;
+    }
+
+    renderTo(elem) {
+        elem.appendChild(this.element)
+    }
+    
+
+
+
+
+
 }
+
+
+
 
 // globals
 
@@ -43,28 +77,10 @@ const updateAll = () => {
         tbody.removeChild(tbody.firstChild);
     }
 
-    trains.forEach((train) => {
+    
 
-        let time = Math.floor(train.time /60)+":"+(train.time % 60);
 
-        let newRow = document.createElement('tr');
-        newRow.id = train.id;
-        
-        newRow.innerHTML = `
-        
-        <td>${train.id}</td>
-        <td>${time}</td>
-        <td class ="status" data="${train.id}">${train.status}</td>
-        <td>${train.name}</td>
-        <td>${train.destination}</td>
-        <td><input type="button" value = "delayed" onclick="delayed(this)" data="${train.id}"></td>
-        <td><input type="button" value = "delete" onclick="del(this)" data="${train.id}"></td>
-        `
-        tbody.appendChild(newRow);
 
-        if(train.status === "delayed") newRow.style.background="red";
-    });
-}
 
 
 function del(e) {
@@ -87,14 +103,12 @@ function del(e) {
 
 
 function delayed(e) {
-
-    console.log(e);
     let dId = e.getAttribute("data");
 
-}
+
     for (let i = 0; i < trains.length; i++) {
         if(trains[i].id === dId) {
-            if (trains[i].status !== "on time") {
+            if (trains[i].status === "delayed") {
                 trains[i].status = "on time";
             } else {
                 trains[i].status = "delayed"
@@ -102,7 +116,7 @@ function delayed(e) {
         }
     }
     updateAll();
-
+}
 
 // event listeners
 
@@ -111,7 +125,7 @@ button.addEventListener("click", newTrain);
 
 ///// ///// ///// ///// ///// ///// ///// ///// /////   run
 
-trains.push({id: "121", time: 540, status: "on time", name: "bob", destination: "paris"});
+trains.push("121", 540, "on time", "bob", "paris"});
 trains.push({id: "432", time: 640, status: "on time", name: "jane", destination: "berlin"});
 trains.push({id: "653", time: 340, status: "delayed", name: "tom", destination: "york"});
 trains.push({id: "457", time: 140, status: "on time", name: "rob", destination: "praha"});
